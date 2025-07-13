@@ -9,6 +9,9 @@ export default {
       zIndex: {
         '-1': '-1',
       },
+      screens: {
+        'xs': '425px', // custom breakpoint for mobile
+      },
     },
   },
   plugins: [],
