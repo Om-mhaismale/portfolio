@@ -29,7 +29,7 @@ export default function Navbar() {
           </div>
           <div className="flex flex-1 items-center justify-center">
             <nav className="w-full">
-              <ul className="flex w-full justify-between items-center" overflow-hidden >
+              <ul className="flex w-full justify-between items-center" >
                 {navigation.map((item) => (
                   <li key={item.name} className="flex-1 text-center">
                     <a

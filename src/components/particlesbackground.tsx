@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
-import CELLS from 'vanta/dist/vanta.cells.min';
+import BIRDS from 'vanta/dist/vanta.birds.min';
 
 const ParticlesBackground: React.FC = () => {
     const vantaRef = useRef<HTMLDivElement>(null);
@@ -8,22 +8,23 @@ const ParticlesBackground: React.FC = () => {
 
     useEffect(() => {
         if (!vantaEffect.current && vantaRef.current) {
-            vantaEffect.current = CELLS({
+            vantaEffect.current = BIRDS({
                 el: vantaRef.current,
                 THREE,
                 mouseControls: true,
                 touchControls: true,
                 gyroControls: false,
-                minHeight: 200.0,
-                minWidth: 200.0,
+                minHeight: 200.00,
+                minWidth: 200.00,
                 scale: 1.00,
-                color1: 0x0,
-                color2: 0x9710c2,
-                size: 1.70,
-                speed: 3.10,
-                direction: 10,
+                scaleMobile: 1.00,
+                birdSize: 2.20,
+                quantity: 4.00,
+                separation: 100.00,
             });
+
         }
+
         return () => {
             if (vantaEffect.current) {
                 vantaEffect.current.destroy();
