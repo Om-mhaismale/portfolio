@@ -46,7 +46,7 @@ const ParticlesBackground: React.FC = () => {
             {/* Background image layer */}
             <div
                 className="fixed top-0 left-0 w-full h-full z-[-2] bg-cover bg-center"
-                style={{ backgroundImage: `url(${bgImg})`, opacity: 0.7 }}
+                style={{ backgroundImage: `url(${bgImg})` }}
             />
 
             {/* Vanta.js birds layer */}
