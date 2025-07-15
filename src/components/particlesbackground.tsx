@@ -19,7 +19,6 @@ const ParticlesBackground: React.FC = () => {
                 minWidth: 200.00,
                 scale: 1.00,
                 scaleMobile: 1.00,
-                backgroundColor: 0x1f1f54,
                 color1: 0x0,
                 color2: 0x0,
                 colorMode: "lerpGradient",
