@@ -1,6 +1,7 @@
-import React, { useEffect, useRef } from 'react';
-import * as THREE from 'three';
-import BIRDS from 'vanta/dist/vanta.birds.min';
+import React, { useEffect, useRef } from "react";
+import * as THREE from "three";
+import BIRDS from "vanta/dist/vanta.birds.min";
+import bgImg from "../assets/bg3.jpg"; // adjust path if needed
 
 const ParticlesBackground: React.FC = () => {
     const vantaRef = useRef<HTMLDivElement>(null);
@@ -18,11 +19,19 @@ const ParticlesBackground: React.FC = () => {
                 minWidth: 200.00,
                 scale: 1.00,
                 scaleMobile: 1.00,
-                birdSize: 2.20,
-                quantity: 4.00,
-                separation: 100.00,
+                backgroundColor: 0x1f1f54,
+                color1: 0x0,
+                color2: 0x0,
+                colorMode: "lerpGradient",
+                birdSize: 2,
+                separation: 500.00,
+                speedLimit: 2.00,
+                wingSpan: 60.00,
+                alignment: 1.00,
+                cohesion: 100.00,
+                quantity: 3.00,
+                backgroundAlpha: 0.0, // <--- IMPORTANT: Makes Vanta transparent
             });
-
         }
 
         return () => {
@@ -34,11 +43,20 @@ const ParticlesBackground: React.FC = () => {
     }, []);
 
     return (
-        <div
-            ref={vantaRef}
-            className="fixed top-0 left-0 w-full h-full z-[-1]"
-            style={{ minHeight: '100vh', minWidth: '100vw' }}
-        />
+        <>
+            {/* Background image layer */}
+            <div
+                className="fixed top-0 left-0 w-full h-full z-[-2] bg-cover bg-center"
+                style={{ backgroundImage: `url(${bgImg})`, opacity: 0.7 }}
+            />
+
+            {/* Vanta.js birds layer */}
+            <div
+                ref={vantaRef}
+                className="fixed top-0 left-0 w-full h-full z-[-1]"
+                style={{ minHeight: "100vh", minWidth: "100vw" }}
+            />
+        </>
     );
 };
 

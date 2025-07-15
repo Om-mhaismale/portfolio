@@ -2,6 +2,9 @@ import { motion } from "framer-motion";
 import omImg from "../assets/om1.jpg";
 import { FaGithub, FaLinkedin, FaYoutube } from "react-icons/fa";
 
+const iconClass =
+  "bg-[#0d1117] p-3 rounded-full hover:bg-[#1f2937] transition";
+
 export default function About() {
   return (
     <section
@@ -16,51 +19,44 @@ export default function About() {
         transition={{ duration: 0.8 }}
       >
         <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight">
-          Hi, there! I'm{" "}
-          <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-blue-400 text-transparent bg-clip-text">
-            <br />Om <br />Mhaismale
+          Hi, I'm{" "}
+          <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-blue-400 text-transparent bg-clip-text block">
+            Om Mhaismale
           </span>
         </h1>
 
         <div className="mt-4 flex flex-wrap justify-center md:justify-start gap-3">
-          <span className="px-4 py-1 bg-purple-800 text-sm rounded-full border border-purple-400">
-            Fullstack Developer
-          </span>
-          <span className="px-4 py-1 bg-blue-800 text-sm rounded-full border border-blue-400">
-            Data Enthusiast
-          </span>
+          {[
+            ["Fullstack Developer", "purple"],
+            ["Data Enthusiast", "blue"],
+          ].map(([text, color]) => (
+            <span
+              key={text}
+              className={`px-4 py-1 bg-${color}-800 text-sm rounded-full border border-${color}-400`}
+            >
+              {text}
+            </span>
+          ))}
         </div>
 
         <p className="mt-6 text-slate-300 text-lg">
-          I’m a curious and driven student pursuing a B.Tech in Artificial
-          Intelligence and Data Science from KJSIT. I love building useful,
-          intelligent systems and learning through real-world challenges.
+          B.Tech student in AI & DS @ KJSIT. Passionate about building
+          intelligent, practical systems and learning from real-world
+          challenges.
         </p>
         <p className="mt-2 text-slate-400">
-          From web dev to data, I believe in using technology to unlock human
-          potential and meaningful impact.
+          From web dev to data, I use tech to unlock potential and create
+          meaningful impact.
         </p>
 
         <div className="mt-6 flex justify-center md:justify-start gap-4">
-          <a
-            href="https://github.com/Om-mhaismale"
-            target="_blank"
-            className="bg-[#0d1117] p-3 rounded-full hover:bg-[#1f2937] transition"
-          >
+          <a href="https://github.com/Om-mhaismale" target="_blank" className={iconClass}>
             <FaGithub size={20} />
           </a>
-          <a
-            href="https://www.linkedin.com/in/om-mhaismale/"
-            target="_blank"
-            className="bg-[#0d1117] p-3 rounded-full hover:bg-[#1f2937] transition"
-          >
+          <a href="https://www.linkedin.com/in/om-mhaismale/" target="_blank" className={iconClass}>
             <FaLinkedin size={20} />
           </a>
-          <a
-            href="https://www.youtube.com/@messmale"
-            target="blank"
-            className="bg-[#0d1117] p-3 rounded-full hover:bg-[#1f2937] transition"
-          >
+          <a href="https://www.youtube.com/@messmale" target="_blank" className={iconClass}>
             <FaYoutube size={20} />
           </a>
         </div>
@@ -91,7 +87,8 @@ export default function About() {
         <img
           src={omImg}
           alt="Om Mhaismale"
-          className="w-100 h-100 object-cover rounded-full border-4 border-purple-500 shadow-xl"
+          loading="lazy"
+          className="w-40 h-40 md:w-60 md:h-60 object-cover rounded-full border-4 border-purple-500 shadow-xl"
         />
       </motion.div>
     </section>
