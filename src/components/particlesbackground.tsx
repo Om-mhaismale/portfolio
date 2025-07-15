@@ -24,7 +24,7 @@ const ParticlesBackground: React.FC = () => {
                 color2: 0x0,
                 colorMode: "lerpGradient",
                 birdSize: 2,
-                separation: 500.00,
+                separation: 200.00,
                 speedLimit: 2.00,
                 wingSpan: 60.00,
                 alignment: 1.00,
