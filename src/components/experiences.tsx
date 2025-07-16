@@ -1,14 +1,14 @@
-// import React from 'react';
+import React, { memo, lazy, Suspense } from 'react';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
-import { BriefcaseIcon } from '@heroicons/react/24/solid'; // Example icon
+import { BriefcaseIcon } from '@heroicons/react/24/solid'; // Can lazy-load for larger apps
 
 const experiences = [
   {
     title: "Frontend Developer",
     company_name: "Creative Agency",
     date: "Jun 2021 - Dec 2022",
-    icon: <BriefcaseIcon className="w-full h-full p-2 text-white" />,
+    iconName: "briefcase",
     iconBg: "#1E293B",
     points: [
       "Built interactive UI components with React and Tailwind CSS.",
@@ -21,7 +21,7 @@ const experiences = [
     title: "Software Engineer",
     company_name: "Tech Solutions Inc.",
     date: "Jan 2023 - Present",
-    icon: <BriefcaseIcon className="w-full h-full p-2 text-white" />,
+    iconName: "briefcase",
     iconBg: "#383E45",
     points: [
       "Developing and maintaining web applications using React.js and other related technologies.",
@@ -30,30 +30,37 @@ const experiences = [
       "Participating in code reviews and providing constructive feedback to other developers.",
     ],
   },
-  // Add more experiences here
 ];
+
+// Icon Renderer
+const renderIcon = (iconName: string) => {
+  switch (iconName) {
+    case 'briefcase':
+    default:
+      return <BriefcaseIcon className="w-full h-full p-2 text-white" />;
+  }
+};
 
 const Experiences = () => {
   return (
-    <div id="experiences" className="py-16 relative z-10 scroll-mt-12 mx-auto px-4 mt-96"> {/* Removed bg-gray-100 */}
+    <section id="experiences" className="py-16 relative z-10 scroll-mt-12 mx-auto px-4 mt-96">
       <h2 className="text-4xl font-bold text-center mb-12">Work Experience</h2>
       <VerticalTimeline layout="1-column-left">
-        {experiences.map((experience, index) => (
+        {experiences.map((exp, idx) => (
           <VerticalTimelineElement
-            key={index}
+            key={idx}
             className="vertical-timeline-element--work"
             contentStyle={{ background: 'rgba(0, 0, 0, 0.7)', color: '#cccccc' }}
- // Set background to transparent
-            contentArrowStyle={{ borderRight: '7px solid transparent' }} // Make arrow transparent
-            date={experience.date}
-            iconStyle={{ background: experience.iconBg, color: '#fff' }}
-            icon={experience.icon}
+            contentArrowStyle={{ borderRight: '7px solid transparent' }}
+            date={exp.date}
+            iconStyle={{ background: exp.iconBg, color: '#fff' }}
+            icon={renderIcon(exp.iconName)}
           >
-            <h3 className="text-gray-100 vertical-timeline-element-title text-xl font-bold">{experience.title}</h3>
-            <h4 className="text-gray-200 vertical-timeline-element-subtitle">{experience.company_name}</h4>
+            <h3 className="text-gray-100 text-xl font-bold">{exp.title}</h3>
+            <h4 className="text-gray-200">{exp.company_name}</h4>
             <ul className="mt-5 list-disc ml-5 space-y-2">
-              {experience.points.map((point, i) => (
-                <li key={`experience-point-${i}`} className="text-gray-300 text-sm tracking-wider">
+              {exp.points.map((point, i) => (
+                <li key={i} className="text-gray-300 text-sm tracking-wider">
                   {point}
                 </li>
               ))}
@@ -61,8 +68,8 @@ const Experiences = () => {
           </VerticalTimelineElement>
         ))}
       </VerticalTimeline>
-    </div>
+    </section>
   );
 };
 
-export default Experiences;
+export default memo(Experiences);

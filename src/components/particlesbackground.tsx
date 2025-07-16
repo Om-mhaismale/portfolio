@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
 import BIRDS from "vanta/dist/vanta.birds.min";
-import bgImg from "../assets/bg3.jpg"; // adjust path if needed
+import bgImg from "../assets/bg3.webp"; // adjust path if needed
 
 const ParticlesBackground: React.FC = () => {
     const vantaRef = useRef<HTMLDivElement>(null);
@@ -22,13 +22,13 @@ const ParticlesBackground: React.FC = () => {
                 color1: 0x0,
                 color2: 0x0,
                 colorMode: "lerpGradient",
-                birdSize: 2,
-                separation: 200.00,
+                birdSize: 1.60,
+                wingSpan: 40.00,
                 speedLimit: 2.00,
-                wingSpan: 60.00,
+                separation: 200.00,
                 alignment: 1.00,
-                cohesion: 100.00,
-                quantity: 3.00,
+                cohesion: 1.00,
+                quantity: 4.00,
                 backgroundAlpha: 0.0, // <--- IMPORTANT: Makes Vanta transparent
             });
         }
