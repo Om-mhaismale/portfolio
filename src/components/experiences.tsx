@@ -1,4 +1,4 @@
-import React, { memo, lazy, Suspense } from 'react';
+import { memo } from 'react';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
 import { BriefcaseIcon } from '@heroicons/react/24/solid'; // Can lazy-load for larger apps
