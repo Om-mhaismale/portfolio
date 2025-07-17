@@ -1,5 +1,5 @@
 import ProjectCard from './project';
-import pjt1 from '../assets/pjt1.jpeg';
+import pjt1 from '../assets/pjt1.webp';
 
 const Projects = () => {
   const projects = [
