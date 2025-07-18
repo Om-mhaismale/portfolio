@@ -58,42 +58,107 @@ export default function Skills() {
     <motion.section
       id="skills"
       className="relative z-10 scroll-mt-28 max-w-4xl mx-auto px-4 mt-96"
-      initial={{ opacity: 0, y: 50 }}
+      initial={{ opacity: 0, y: 100 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-      viewport={{ once: true }}
+      transition={{ 
+        duration: 1,
+        ease: "easeOut"
+      }}
+      viewport={{ once: true, amount: 0.2 }}
     >
-      <h2 className="text-3xl font-bold text-white mb-15 text-center">Skills</h2>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 justify-items-center">
-        {skills.map(({ name, icon, color }) => {
+      <motion.h2 
+        className="text-3xl font-bold text-white mb-15 text-center"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ 
+          duration: 0.8,
+          delay: 0.2,
+          ease: "easeOut"
+        }}
+        viewport={{ once: true }}
+      >
+        Skills
+      </motion.h2>
+      
+      <motion.div 
+        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 justify-items-center"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.4 }}
+        viewport={{ once: true }}
+      >
+        {skills.map(({ name, icon, color }, index) => {
           const IconComponent = iconMap[icon];
           if (!IconComponent) return null;
 
           return (
-            <div key={name} className="flex flex-col items-center space-y-2">
+            <motion.div 
+              key={name} 
+              className="flex flex-col items-center space-y-2"
+              initial={{ 
+                opacity: 0, 
+                y: 50,
+                scale: 0.8
+              }}
+              whileInView={{ 
+                opacity: 1, 
+                y: 0,
+                scale: 1
+              }}
+              transition={{ 
+                duration: 0.6,
+                delay: 0.6 + (index * 0.1),
+                ease: "easeOut",
+                type: "spring",
+                stiffness: 100,
+                damping: 10
+              }}
+              viewport={{ once: true }}
+            >
               <motion.span
                 className="relative flex items-center justify-center"
                 whileHover={{
-                  scale: 1,
+                  scale: 1.2,
                   y: -10,
-                  transition: { type: "spring", stiffness: 500 },
+                  transition: { 
+                    type: "spring", 
+                    stiffness: 400,
+                    damping: 10
+                  },
                 }}
+                whileTap={{ scale: 0.95 }}
               >
-                <span
+                <motion.span
                   className={`absolute w-16 h-16 rounded-full blur-xl opacity-70 ${color}`}
                   style={{
                     background: "radial-gradient(circle, #38bdf8 0%, transparent 90%)",
+                  }}
+                  whileHover={{
+                    scale: 1.3,
+                    opacity: 0.9,
                   }}
                 />
                 <span className={`text-5xl z-10 ${color}`}>
                   <IconComponent />
                 </span>
               </motion.span>
-              <span className="text-white text-base font-medium">{name}</span>
-            </div>
+              
+              <motion.span 
+                className="text-white text-base font-medium"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ 
+                  duration: 0.4,
+                  delay: 0.8 + (index * 0.1)
+                }}
+                viewport={{ once: true }}
+              >
+                {name}
+              </motion.span>
+            </motion.div>
           );
         })}
-      </div>
+      </motion.div>
     </motion.section>
   );
 }
