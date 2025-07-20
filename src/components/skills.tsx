@@ -55,33 +55,16 @@ const skills = [
 
 export default function Skills() {
   return (
-    <motion.section
+    <section
       id="skills"
-      className="relative z-10 scroll-mt-28 max-w-4xl mx-auto px-4 mt-96"
-      initial={{ opacity: 0, y: 100 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ 
-        duration: 1,
-        ease: "easeOut"
-      }}
-      viewport={{ once: true, amount: 0.2 }}
+      className="relative z-10 scroll-mt-32 max-w-4xl mx-auto px-4 mt-96"
     >
-      <motion.h2 
-        className="text-3xl font-bold text-white mb-15 text-center"
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ 
-          duration: 0.8,
-          delay: 0.2,
-          ease: "easeOut"
-        }}
-        viewport={{ once: true }}
-      >
+      <h2 className="text-3xl font-bold text-white mb-15 text-center">
         Skills
-      </motion.h2>
+      </h2>
       
       <motion.div 
-        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 justify-items-center"
+        className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-5 gap-20 justify-items-center"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.4 }}
@@ -131,7 +114,7 @@ export default function Skills() {
                 <motion.span
                   className={`absolute w-16 h-16 rounded-full blur-xl opacity-70 ${color}`}
                   style={{
-                    background: "radial-gradient(circle, #38bdf8 0%, transparent 90%)",
+                    background: "radial-gradient(circle, #E3A008 0%, transparent 60%)",
                   }}
                   whileHover={{
                     scale: 1.3,
@@ -159,6 +142,6 @@ export default function Skills() {
           );
         })}
       </motion.div>
-    </motion.section>
+    </section>
   );
 }

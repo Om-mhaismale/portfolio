@@ -1,44 +1,53 @@
-type ProjectCardProps = {
-    title: string;
-    description: string;
-    image: string;
-    stack: string[];
-};
+import { memo } from 'react';
 
-const ProjectCard = ({ title, description, image, stack }: ProjectCardProps) => {
-    return (
-        <div className="bg-[#1c1c2e] border border-gray-700 rounded-xl w-full max-w-sm shadow-md">
-            {/* Project Image */}
-            <div className="w-full h-56 relative rounded-lg overflow-hidden">
-                <img
-                    src={image}
-                    alt={title}
-                    className="w-full h-full object-cover object-left rounded-md"
-                />
-            </div>
+interface ProjectCardProps {
+  title: string;
+  description: string;
+  image: string;
+  stack: readonly string[];
+  githubUrl: string;
+}
 
+const ProjectCard = memo(({ title, description, image, stack, githubUrl }: ProjectCardProps) => {
+  const handleTitleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    window.open(githubUrl, '_blank', 'noopener,noreferrer');
+  };
 
-            {/* Title */}
-            <h2 className="text-xl font-bold text-white mt-4 pl-2">{title}</h2>
-
-            {/* Tech Stack */}
-            <div className="flex flex-wrap gap-2 mt-3 pl-2">
-                {stack.map((tech, index) => (
-                    <span
-                        key={index}
-                        className="bg-gray-700 text-white text-sm px-3 py-1 rounded-md"
-                    >
-                        {tech}
-                    </span>
-                ))}
-            </div>
-
-            {/* Description */}
-            <p className="text-gray-300 mt-4 text-sm leading-relaxed ps-3 pb-3">
-                {description}
-            </p>
+  return (
+    <div className="bg-gray-800/80 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 w-full min-w-0">
+      <img 
+        src={image} 
+        alt={title}
+        className="w-full h-48 object-cover rounded-lg"
+        loading="lazy"
+      />
+      <div className="p-6">
+        <h3 
+          className="text-xl font-semibold text-white mb-3 cursor-pointer hover:text-amber-200 transition-colors duration-200"
+          onClick={handleTitleClick}
+          title="Click to view on GitHub"
+        >
+          {title}
+        </h3>
+        <p className="text-gray-300 text-sm mb-4">
+          {description}
+        </p>
+        <div className="flex flex-wrap gap-2">
+          {stack.map((tech, index) => (
+            <span 
+              key={`${tech}-${index}`}
+              className="px-4 py-3 bg-amber-100/35 text-amber-50 text-xs rounded-md"
+            >
+              {tech}
+            </span>
+          ))}
         </div>
-    );
-};
+      </div>
+    </div>
+  );
+});
+
+ProjectCard.displayName = 'ProjectCard';
 
 export default ProjectCard;

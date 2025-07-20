@@ -1,67 +1,85 @@
 import { memo } from 'react';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
-import { BriefcaseIcon } from '@heroicons/react/24/solid'; // Can lazy-load for larger apps
 
-const experiences = [
-  {
-    title: "Frontend Developer",
-    company_name: "Creative Agency",
-    date: "Jun 2021 - Dec 2022",
-    iconName: "briefcase",
-    iconBg: "#1E293B",
-    points: [
-      "Built interactive UI components with React and Tailwind CSS.",
-      "Worked closely with designers to translate Figma designs into code.",
-      "Optimized web applications for speed and scalability.",
-      "Maintained project documentation and onboarding guides.",
-    ],
-  },
-  {
-    title: "Software Engineer",
-    company_name: "Tech Solutions Inc.",
-    date: "Jan 2023 - Present",
-    iconName: "briefcase",
-    iconBg: "#383E45",
-    points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
-    ],
-  },
-];
-
-// Icon Renderer
-const renderIcon = (iconName: string) => {
-  switch (iconName) {
-    case 'briefcase':
-    default:
-      return <BriefcaseIcon className="w-full h-full p-2 text-white" />;
-  }
+type Experience = {
+  id: string;
+  title: string;
+  company: string;
+  date: string;
+  points: readonly string[];
 };
 
-const Experiences = () => {
+const experiences: readonly Experience[] = [
+  {
+    id: "software-engineer",
+    title: "Software Engineer", 
+    company: "Tech Solutions Inc.",
+    date: "Jan 2023 - Present",
+    points: [
+      "Develop web applications using React.js and modern technologies",
+      "Collaborate with cross-functional teams for high-quality products",
+      "Implement responsive design and cross-browser compatibility",
+      "Participate in code reviews and provide constructive feedback"
+    ],
+  },
+  {
+    id: "frontend-dev",
+    title: "Frontend Developer",
+    company: "Creative Agency",
+    date: "Jun 2021 - Dec 2022",
+    points: [
+      "Built interactive UI components with React and Tailwind CSS",
+      "Translated Figma designs into responsive code",
+      "Optimized applications for speed and scalability",
+      "Maintained documentation and onboarding guides"
+    ],
+  },
+] as const;
+
+const Experiences = memo(() => {
   return (
-    <section id="experiences" className="py-16 relative z-10 scroll-mt-12 mx-auto px-4 mt-96">
-      <h2 className="text-4xl font-bold text-center mb-12">Work Experience</h2>
-      <VerticalTimeline layout="1-column-left">
-        {experiences.map((exp, idx) => (
+    <section id="experiences" className="w-full px-6 py-16 scroll-mt-12">
+      <h2 className="text-4xl font-bold text-white mb-12 text-center">
+        Work Experience
+      </h2>
+      
+      <VerticalTimeline>
+        {experiences.map((experience) => (
           <VerticalTimelineElement
-            key={idx}
+            key={experience.id}
             className="vertical-timeline-element--work"
-            contentStyle={{ background: 'rgba(0, 0, 0, 0.7)', color: '#cccccc' }}
-            contentArrowStyle={{ borderRight: '7px solid transparent' }}
-            date={exp.date}
-            iconStyle={{ background: exp.iconBg, color: '#fff' }}
-            icon={renderIcon(exp.iconName)}
+            contentStyle={{ 
+              background: 'rgb(31, 41, 55, 0.5)', 
+              color: '#fff',
+              border: '1px solid rgb(55, 65, 81, 0.5)',
+              borderRadius: '0.5rem'
+            }}
+            contentArrowStyle={{ borderRight: '7px solid rgb(31, 41, 55, 0.5)' }}
+            date={experience.date}
+            dateClassName="text-amber-200"
+            iconStyle={{ 
+              background: 'rgb(252, 211, 77)', 
+              color: '#111827',
+              border: '4px solid #111827'
+            }}
+            icon={
+              <div className="w-full h-full flex items-center justify-center">
+                <div className="w-2 h-2 bg-gray-900 rounded-full" />
+              </div>
+            }
           >
-            <h3 className="text-gray-100 text-xl font-bold">{exp.title}</h3>
-            <h4 className="text-gray-200">{exp.company_name}</h4>
-            <ul className="mt-5 list-disc ml-5 space-y-2">
-              {exp.points.map((point, i) => (
-                <li key={i} className="text-gray-300 text-sm tracking-wider">
-                  {point}
+            <h3 className="text-lg font-semibold text-white mb-1">
+              {experience.title}
+            </h3>
+            <h4 className="text-gray-300 text-sm mb-3">
+              {experience.company}
+            </h4>
+            <ul className="space-y-1">
+              {experience.points.map((point, idx) => (
+                <li key={idx} className="text-gray-400 text-sm flex items-start">
+                  <span className="text-amber-200 mr-2 mt-1.5 flex-shrink-0">•</span>
+                  <span>{point}</span>
                 </li>
               ))}
             </ul>
@@ -70,6 +88,8 @@ const Experiences = () => {
       </VerticalTimeline>
     </section>
   );
-};
+});
 
-export default memo(Experiences);
+Experiences.displayName = 'Experiences';
+
+export default Experiences;

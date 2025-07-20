@@ -9,18 +9,18 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative z-10 scroll-mt-28 flex flex-col-reverse md:flex-row items-center justify-center gap-10 max-w-5xl mx-auto px-6 mt-24 md:mt-32 text-white"
+      className="relative z-10 px-10 scroll-mt-28 flex flex-col-reverse md:flex-row items-center justify-center gap-10 max-w-7xl mx-auto mt-24 md:mt-40 text-white"
     >
       {/* Text Content */}
       <motion.div
-        className="text-center md:text-left max-w-xl"
+        className="text-center md:text-left max-w-2xl"
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
       >
         <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight">
-          Hi, I'm{" "}
-          <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-blue-400 text-transparent bg-clip-text block">
+          Hey, I'm{" "}
+          <span className="bg-gradient-to-r from-amber-500 via-pink-700 to-amber-100 text-transparent bg-clip-text block">
             Om Mhaismale
           </span>
         </h1>
@@ -28,7 +28,7 @@ export default function About() {
         <div className="mt-4 flex flex-wrap justify-center md:justify-start gap-3">
           {[
             ["Fullstack Developer", "purple"],
-            ["Data Enthusiast", "blue"],
+            ["AI Enthusiast", "blue"],
           ].map(([text, color]) => (
             <span
               key={text}
@@ -40,16 +40,13 @@ export default function About() {
         </div>
 
         <p className="mt-6 text-slate-300 text-lg">
-          B.Tech student in AI & DS @ KJSIT. Passionate about building
-          intelligent, practical systems and learning from real-world
-          challenges.
+          I am a software developer specializing in web development and AI engineering, currently pursuing a Btech degree in Artificial Intelligence and Data Science @KJSIT, My technical skills include Python, FastApi, React.js, and various data science libraries like Pandas, Numpy, Scikit-learn, and TensorFlow.
         </p>
         <p className="mt-2 text-slate-400">
-          From web dev to data, I use tech to unlock potential and create
-          meaningful impact.
+          I am a problem-solver, having solved over 100 problems on LeetCode, and I am proud to have won a hackathon organized by Healthifyme.
         </p>
 
-        <div className="mt-6 flex justify-center md:justify-start gap-4">
+        <div className="mt-6 flex justify-center md:justify-start gap-4 ">
           <a href="https://github.com/Om-mhaismale" target="_blank" className={iconClass}>
             <FaGithub size={20} />
           </a>
@@ -63,14 +60,14 @@ export default function About() {
 
         <div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
           <a
-            href="#"
-            className="px-6 py-2 bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-lg font-medium hover:opacity-90 transition"
+            href="https://drive.google.com/file/d/1XTIBDpNQ4JVrbwzz_H24lo-4_OhueCwl/view?usp=sharing" target="_blank"
+            className="px-6 py-2 bg-gradient-to-r from-amber-500 to-amber-200 text-amber-950 rounded-lg font-medium hover:opacity-90 transition"
           >
             View CV
           </a>
           <a
             href="#contact"
-            className="px-6 py-2 border border-purple-500 text-purple-400 rounded-lg font-medium hover:bg-purple-500 hover:text-white transition"
+            className="px-6 py-2 border border-amber-200 text-amber-200 rounded-lg font-medium hover:bg-amber-400 hover:text-amber-950 transition"
           >
             Contact Me
           </a>
@@ -79,18 +76,21 @@ export default function About() {
 
       {/* Profile Image */}
       <motion.div
-        className="flex-shrink-0 animate-glow"
+        className="flex-shrink-0 animate-glow relative"
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, delay: 0.3 }}
       >
-        <img
-          src={omImg}
-          alt="Om Mhaismale"
-          loading="lazy"
-          className="w-40 h-40 md:w-60 md:h-60 object-cover rounded-full border-4 border-purple-500 shadow-xl"
-        />
-      </motion.div>
+        <div className="relative">
+          <div className="absolute -inset-1 bg-gradient-to-r from-orange-300 via-yellow-100 to-amber-400 rounded-full blur-sm opacity-75 animate-pulse"></div>
+          <img
+            src={omImg}
+            alt="Om Mhaismale"
+            loading="lazy"
+            className="relative w-40 h-40 md:w-100 md:h-100 object-cover rounded-full shadow-2xl"
+          />
+        </div>
+      </motion.div>  
     </section>
   );
 }
