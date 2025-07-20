@@ -87,7 +87,7 @@ export default function About() {
             src={omImg}
             alt="Om Mhaismale"
             loading="lazy"
-            className="relative w-40 h-40 md:w-100 md:h-100 object-cover rounded-full shadow-2xl"
+            className="relative w-80 h-80 md:w-100 md:h-100 object-cover rounded-full shadow-2xl"
           />
         </div>
       </motion.div>  

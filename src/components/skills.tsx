@@ -67,7 +67,7 @@ export default function Skills() {
         className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-5 gap-20 justify-items-center"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.4 }}
+        transition={{ duration: 0.15, delay: 0.05 }}
         viewport={{ once: true }}
       >
         {skills.map(({ name, icon, color }, index) => {
@@ -80,8 +80,8 @@ export default function Skills() {
               className="flex flex-col items-center space-y-2"
               initial={{ 
                 opacity: 0, 
-                y: 50,
-                scale: 0.8
+                y: 30,
+                scale: 0.9
               }}
               whileInView={{ 
                 opacity: 1, 
@@ -89,12 +89,12 @@ export default function Skills() {
                 scale: 1
               }}
               transition={{ 
-                duration: 0.6,
-                delay: 0.6 + (index * 0.1),
+                duration: 0.15,
+                delay: 0.05 + (index * 0.02),
                 ease: "easeOut",
                 type: "spring",
-                stiffness: 100,
-                damping: 10
+                stiffness: 200,
+                damping: 15
               }}
               viewport={{ once: true }}
             >
@@ -105,8 +105,9 @@ export default function Skills() {
                   y: -10,
                   transition: { 
                     type: "spring", 
-                    stiffness: 400,
-                    damping: 10
+                    stiffness: 500,
+                    damping: 15,
+                    duration: 0.1
                   },
                 }}
                 whileTap={{ scale: 0.95 }}
@@ -119,6 +120,7 @@ export default function Skills() {
                   whileHover={{
                     scale: 1.3,
                     opacity: 0.9,
+                    transition: { duration: 0.1 }
                   }}
                 />
                 <span className={`text-5xl z-10 ${color}`}>
@@ -131,8 +133,8 @@ export default function Skills() {
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ 
-                  duration: 0.4,
-                  delay: 0.8 + (index * 0.1)
+                  duration: 0.1,
+                  delay: 0.1 + (index * 0.02)
                 }}
                 viewport={{ once: true }}
               >
