@@ -23,18 +23,6 @@ const experiences: readonly Experience[] = [
       "Participate in code reviews and provide constructive feedback"
     ],
   },
-  {
-    id: "frontend-dev",
-    title: "Frontend Developer",
-    company: "Creative Agency",
-    date: "Jun 2021 - Dec 2022",
-    points: [
-      "Built interactive UI components with React and Tailwind CSS",
-      "Translated Figma designs into responsive code",
-      "Optimized applications for speed and scalability",
-      "Maintained documentation and onboarding guides"
-    ],
-  },
 ] as const;
 
 const Experiences = memo(() => {
@@ -44,7 +32,7 @@ const Experiences = memo(() => {
         Work Experience
       </h2>
       
-      <VerticalTimeline>
+      <VerticalTimeline layout="1-column">
         {experiences.map((experience) => (
           <VerticalTimelineElement
             key={experience.id}
