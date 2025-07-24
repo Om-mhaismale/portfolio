@@ -1,5 +1,6 @@
 import { FaEnvelope, FaLinkedin, FaGithub, FaInstagram } from 'react-icons/fa';
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
 
 const Contacts = () => {
   const email = "ommhaismale13@gmail.com";
@@ -45,11 +46,40 @@ const Contacts = () => {
     }
   ];
 
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true });
+
+  const containerVariants = {
+    hidden: { opacity: 0, y: 100 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        delayChildren: 0.3,
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0 }
+  };
+
   return (
-    <section id="contact" className="p-8 scroll-mt-12 text-white min-h-screen flex flex-col items-center justify-center relative overflow-hidden">
+    <motion.section
+      id="contact"
+      className="p-8 scroll-mt-12 text-white min-h-screen flex flex-col items-center justify-center relative overflow-hidden mt-96 z-50"
+      ref={sectionRef}
+      variants={containerVariants}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+    >
       {/* Animated Background Elements */}
       <motion.div
         className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-orange-400/20 to-pink-500/20 rounded-full blur-xl"
+        variants={itemVariants}
         animate={{
           x: [0, 100, 0],
           y: [0, -50, 0],
@@ -64,6 +94,7 @@ const Contacts = () => {
       
       <motion.div
         className="absolute bottom-20 right-10 w-24 h-24 bg-gradient-to-br from-amber-300/20 to-amber-50/20 rounded-full blur-xl"
+        variants={itemVariants}
         animate={{
           x: [0, -80, 0],
           y: [0, 60, 0],
@@ -78,6 +109,7 @@ const Contacts = () => {
 
       <motion.div
         className="absolute top-1/2 left-1/4 w-16 h-16 bg-gradient-to-br from-pink-600/30 to-red-500/20 rounded-full blur-lg"
+        variants={itemVariants}
         animate={{
           rotate: [0, 360],
           scale: [1, 10, 1],
@@ -95,6 +127,7 @@ const Contacts = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         className="text-center mb-12"
+        variants={itemVariants}
       >
         <h2 className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-orange-400 to-pink-500 bg-clip-text text-transparent">
           Let's Connect
@@ -118,6 +151,7 @@ const Contacts = () => {
             whileHover={{ scale: 1.05, y: -5 }}
             whileTap={{ scale: 0.95 }}
             className={`group relative overflow-hidden rounded-2xl bg-gradient-to-br ${card.color} p-6 shadow-lg hover:shadow-2xl transition-all duration-300`}
+            variants={itemVariants}
           >
             {/* Animated Background */}
             <motion.div
@@ -170,12 +204,13 @@ const Contacts = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.6 }}
         className="mt-12 text-center"
+        variants={itemVariants}
       >
         <p className="text-gray-400 text-sm">
           I'm always excited to discuss new opportunities and creative projects!
         </p>
       </motion.div>
-    </section>
+    </motion.section>
   );
 };
 

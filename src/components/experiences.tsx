@@ -27,7 +27,7 @@ const experiences: readonly Experience[] = [
 
 const Experiences = memo(() => {
   return (
-    <section id="experiences" className="w-full px-6 py-16 scroll-mt-12">
+    <section id="experiences" className="w-full px-6 py-16 scroll-mt-12 mt-96">
       <h2 className="text-4xl font-bold text-white mb-12 text-center">
         Work Experience
       </h2>
