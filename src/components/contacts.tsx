@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const Contacts = () => {
   const email = "ommhaismale13@gmail.com";
-  const linkedInProfile = "https://www.linkedin.com/in/om-mhaismale/";
+  const linkedInProfile = "https://www.linkedin.com/in/om-mhaismale/overlay/contact-info/";
   const githubProfile = "https://github.com/Om-mhaismale";
   const instagramProfile = "https://www.instagram.com/abigukulele/";
 
@@ -38,7 +38,7 @@ const Contacts = () => {
       href: instagramProfile,
       icon: FaInstagram,
       text: "Follow on Instagram",
-      color: "from-pink-500 to-purple-600",
+      color: "from-red-500 to-purple-600",
       hoverColor: "from-pink-600 to-purple-700",
       target: "_blank",
       delay: 0.4
