@@ -42,7 +42,7 @@ function App() {
   return (
     <>
       {isLoading ? (
-        <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-900 text-white z-50">
+        <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black text-white z-50">
           <p className="text-3xl font-bold">Loading... {progress.toFixed(0)}%</p>
         </div>
       ) : (

@@ -12,15 +12,15 @@ type Experience = {
 
 const experiences: readonly Experience[] = [
   {
-    id: "software-engineer",
-    title: "Software Engineer", 
-    company: "Tech Solutions Inc.",
-    date: "Jan 2023 - Present",
+    id: "ai-engineer",
+    title: "Ai Engineer", 
+    company: "AIExecutive",
+    date: "Jun 2025 - Present",
     points: [
-      "Develop web applications using React.js and modern technologies",
-      "Collaborate with cross-functional teams for high-quality products",
-      "Implement responsive design and cross-browser compatibility",
-      "Participate in code reviews and provide constructive feedback"
+      "Spearheaded the AI Football Analyzer project for advanced sports analytics.",
+      "Collaborated with cross-functional teams to design innovative AI solutions.",
+      "Utilized a diverse range of AI technology stacks for robust application development.",
+      "Applied advanced AI techniques to solve complex, data-driven challenges."
     ],
   },
 ] as const;
@@ -28,46 +28,47 @@ const experiences: readonly Experience[] = [
 const Experiences = memo(() => {
   return (
     <section id="experiences" className="w-full px-6 py-16 scroll-mt-12 mt-96">
-      <h2 className="text-4xl font-bold text-white mb-12 text-center">
+      <h2 className="text-3xl sm:text-4xl font-bold mb-16 text-center bg-gradient-to-b from-amber-400 bg-clip-text text-transparent pb-4">
         Work Experience
       </h2>
       
-      <VerticalTimeline layout="1-column">
+      <VerticalTimeline lineColor="#374151" layout="1-column">
         {experiences.map((experience) => (
           <VerticalTimelineElement
             key={experience.id}
             className="vertical-timeline-element--work"
             contentStyle={{ 
-              background: 'rgb(31, 41, 55, 0.5)', 
+              background: 'rgba(17, 24, 39, 0.8)', 
               color: '#fff',
-              border: '1px solid rgb(55, 65, 81, 0.5)',
-              borderRadius: '0.5rem'
+              border: '1px solid rgba(55, 65, 81, 0.8)',
+              borderRadius: '0.5rem',
+              boxShadow: 'none',
+              padding: '1.5rem 2rem'
             }}
-            contentArrowStyle={{ borderRight: '7px solid rgb(31, 41, 55, 0.5)' }}
+            contentArrowStyle={{ borderRight: '10px solid rgba(55, 65, 81, 0.8)' }}
             date={experience.date}
-            dateClassName="text-amber-200"
+            dateClassName="!font-normal !text-gray-400"
             iconStyle={{ 
-              background: 'rgb(252, 211, 77)', 
-              color: '#111827',
-              border: '4px solid #111827'
+              background: '#111827', 
+              color: '#f59e0b',
+              boxShadow: '0 0 5px 7px #f59e0b',
+              width: '20px',
+              height: '20px',
+              marginLeft: '10px',
+              marginTop: '10px'
             }}
-            icon={
-              <div className="w-full h-full flex items-center justify-center">
-                <div className="w-2 h-2 bg-gray-900 rounded-full" />
-              </div>
-            }
+            icon={<div />}
           >
-            <h3 className="text-lg font-semibold text-white mb-1">
+            <h3 className="text-lg font-semibold text-amber-400 mb-1">
               {experience.title}
             </h3>
-            <h4 className="text-gray-300 text-sm mb-3">
+            <h4 className="text-gray-400 text-sm mb-4 font-normal">
               {experience.company}
             </h4>
-            <ul className="space-y-1">
+            <ul className="space-y-2">
               {experience.points.map((point, idx) => (
-                <li key={idx} className="text-gray-400 text-sm flex items-start">
-                  <span className="text-amber-200 mr-2 mt-1.5 flex-shrink-0">•</span>
-                  <span>{point}</span>
+                <li key={idx} className="text-gray-300 text-sm tracking-wide">
+                  {point}
                 </li>
               ))}
             </ul>

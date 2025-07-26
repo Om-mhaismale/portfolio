@@ -65,7 +65,7 @@ const Projects = memo(() => {
       id="projects" 
       className="w-full flex flex-col items-center px-6 py-16 scroll-mt-12 mt-96"
     >
-      <h2 className="text-4xl font-bold text-white mb-12 text-center">
+      <h2 className="text-3xl sm:text-4xl font-bold mb-16 text-center bg-gradient-to-b from-amber-400 bg-clip-text text-transparent pb-4">
         Projects
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8 w-full max-w-7xl">
