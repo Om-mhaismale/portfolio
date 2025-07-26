@@ -1,9 +1,10 @@
 import React from 'react';
-import videoUrl from '../assets/bg71.mp4'; // Use your converted video
+import videoUrl from '../assets/bg1.mp4'; // Use your converted video
 
 const VideoBackground: React.FC = () => (
     <div className="fixed top-0 left-0 w-full h-full z-[-1]">
         <video
+            preload="metadata"
             autoPlay
             loop
             muted

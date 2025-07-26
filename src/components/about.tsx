@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import omImg from "../assets/myimg6.jpg";
+import omImg from "../assets/myimg6.webp";
 import { FaGithub, FaLinkedin, FaYoutube } from "react-icons/fa";
 
 const iconClass =

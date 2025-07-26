@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, useCallback } from 'react';
 
 interface ProjectCardProps {
   title: string;
@@ -9,10 +9,10 @@ interface ProjectCardProps {
 }
 
 const ProjectCard = memo(({ title, description, image, stack, githubUrl }: ProjectCardProps) => {
-  const handleTitleClick = (e: React.MouseEvent) => {
+  const handleTitleClick = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
     window.open(githubUrl, '_blank', 'noopener,noreferrer');
-  };
+  }, [githubUrl]);
 
   return (
     <div className="bg-gray-800/80 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 w-full min-w-0">

@@ -11,7 +11,6 @@ const navigation = [
 
 export default function Navbar() {
   const [hoveredIndex, setHoveredIndex] = useState(0);
-  const [animationComplete] = useState(false);
 
   return (
     <div className="fixed top-0 left-1/2 -translate-x-1/2 z-50 w-full max-w-4xl px-4 sm:px-6 md:px-10">
@@ -25,9 +24,7 @@ export default function Navbar() {
                     key={item.name}
                     href={item.href}
                     onMouseEnter={() => setHoveredIndex(i)}
-                    className={`relative rounded-full no-underline font-medium text-xs sm:text-sm md:text-lg px-2 sm:px-3 md:px-4 py-1 sm:py-2 transition-colors duration-300 ${
-                      hoveredIndex === i && animationComplete ? "text-black" : "text-yellow-100"
-                    }`}
+                    className="relative rounded-full no-underline font-medium text-xs sm:text-sm md:text-lg px-2 sm:px-3 md:px-4 py-1 sm:py-2 transition-colors duration-300 text-yellow-100"
                   >
                     {hoveredIndex === i && (
                       <MagicTabSelect

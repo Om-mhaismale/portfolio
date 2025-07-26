@@ -1,71 +1,71 @@
 import { FaEnvelope, FaLinkedin, FaGithub, FaInstagram } from 'react-icons/fa';
 import { motion, useInView } from 'framer-motion';
-import { useRef, useMemo } from 'react';
+import { useRef } from 'react';
+
+const email = "ommhaismale13@gmail.com";
+const linkedInProfile = "https://www.linkedin.com/in/om-mhaismale/overlay/contact-info/";
+const githubProfile = "https://github.com/Om-mhaismale";
+const instagramProfile = "https://www.instagram.com/abigukulele/";
+
+const contactCards = [
+  {
+    href: `mailto:${email}`,
+    icon: FaEnvelope,
+    text: "Email Me",
+    color: "from-blue-500 to-blue-600",
+    hoverColor: "from-blue-600 to-blue-700",
+    delay: 0.1
+  },
+  {
+    href: linkedInProfile,
+    icon: FaLinkedin,
+    text: "Connect on LinkedIn",
+    color: "from-[#0a66c2] to-[#004182]",
+    hoverColor: "from-[#004182] to-[#003366]",
+    target: "_blank",
+    delay: 0.2
+  },
+  {
+    href: githubProfile,
+    icon: FaGithub,
+    text: "Follow on GitHub",
+    color: "from-gray-700 to-gray-800",
+    hoverColor: "from-gray-800 to-gray-900",
+    target: "_blank",
+    delay: 0.3
+  },
+  {
+    href: instagramProfile,
+    icon: FaInstagram,
+    text: "Follow on Instagram",
+    color: "from-red-500 to-purple-600",
+    hoverColor: "from-pink-600 to-purple-700",
+    target: "_blank",
+    delay: 0.4
+  }
+];
+
+const containerVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      delayChildren: 0.2,
+      staggerChildren: 0.1
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 }
+};
 
 const Contacts = () => {
-  const email = "ommhaismale13@gmail.com";
-  const linkedInProfile = "https://www.linkedin.com/in/om-mhaismale/overlay/contact-info/";
-  const githubProfile = "https://github.com/Om-mhaismale";
-  const instagramProfile = "https://www.instagram.com/abigukulele/";
-
-  const contactCards = useMemo(() => [
-    {
-      href: `mailto:${email}`,
-      icon: FaEnvelope,
-      text: "Email Me",
-      color: "from-blue-500 to-blue-600",
-      hoverColor: "from-blue-600 to-blue-700",
-      delay: 0.1
-    },
-    {
-      href: linkedInProfile,
-      icon: FaLinkedin,
-      text: "Connect on LinkedIn",
-      color: "from-[#0a66c2] to-[#004182]",
-      hoverColor: "from-[#004182] to-[#003366]",
-      target: "_blank",
-      delay: 0.2
-    },
-    {
-      href: githubProfile,
-      icon: FaGithub,
-      text: "Follow on GitHub",
-      color: "from-gray-700 to-gray-800",
-      hoverColor: "from-gray-800 to-gray-900",
-      target: "_blank",
-      delay: 0.3
-    },
-    {
-      href: instagramProfile,
-      icon: FaInstagram,
-      text: "Follow on Instagram",
-      color: "from-red-500 to-purple-600",
-      hoverColor: "from-pink-600 to-purple-700",
-      target: "_blank",
-      delay: 0.4
-    }
-  ], [email, githubProfile, instagramProfile, linkedInProfile]);
-
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true });
-
-  const containerVariants = useMemo(() => ({
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-        delayChildren: 0.2,
-        staggerChildren: 0.1
-      }
-    }
-  }), []);
-
-  const itemVariants = useMemo(() => ({
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 }
-  }), []);
 
   return (
     <motion.section
