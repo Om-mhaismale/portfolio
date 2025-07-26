@@ -92,8 +92,8 @@ export default function Skills() {
       <motion.h2 
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.5 }}
-        transition={{ duration: 0.5 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.2 }}
         className="text-3xl sm:text-4xl font-bold mb-16 text-center bg-gradient-to-b from-amber-400 bg-clip-text text-transparent pb-4"
       >
         My Tech Stack
@@ -132,7 +132,7 @@ export default function Skills() {
                     <motion.li
                       key={name}
                       variants={itemVariants}
-                      className="group flex items-center gap-3 rounded-lg border border-white/10 bg-amber-900/30 p-3 backdrop-blur-sm transition-all duration-300 hover:border-blue-500/10 hover:bg-amber-800/50 hover:-translate-y-1"
+                      className="group flex items-center gap-3 rounded-lg border border-white/10 bg-gray-800/50 p-3 backdrop-blur-sm transition-all duration-300 hover:border-blue-500/10 hover:bg-amber-950/60 hover:-translate-y-1"
                     >
                       <div className={`text-2xl ${color}`}>
                         <IconComponent />
