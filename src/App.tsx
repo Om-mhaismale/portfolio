@@ -58,12 +58,12 @@ function App() {
 
       {isLoading ? (
         // Loading screen is now transparent to show the background
-        <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center text-white z-50">
+        <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black/70 text-white z-50">
           <p className="text-3xl font-bold">Loading... {progress.toFixed(0)}%</p>
         </div>
       ) : (
         // Main content also renders over the background
-        <Suspense fallback={<div className="fixed top-0 left-0 w-full h-full flex items-center justify-center text-white z-50"><p></p></div>}>
+        <Suspense fallback={<div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black/70 text-white z-50"><p></p></div>}>
           <Navbar />
           <About />
           <Skills />
