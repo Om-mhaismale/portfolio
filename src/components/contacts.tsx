@@ -37,7 +37,7 @@ const contactCards = [
   {
     href: instagramProfile,
     icon: FaInstagram,
-    text: "Follow on Instagram",
+    text: "Guitar Enthusiast",
     color: "from-red-500 to-purple-600",
     hoverColor: "from-pink-600 to-purple-700",
     target: "_blank",

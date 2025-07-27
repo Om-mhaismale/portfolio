@@ -60,7 +60,7 @@ export default function About() {
 
         <div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
           <a
-            href="https://drive.google.com/file/d/1XTIBDpNQ4JVrbwzz_H24lo-4_OhueCwl/view?usp=sharing" target="_blank"
+            href="https://drive.google.com/file/d/1514oD-5lmDZvXQ_xIzw5iP-9dZiUA5o1/view?usp=sharing" target="_blank"
             className="px-6 py-2 bg-gradient-to-r from-amber-500 to-amber-200 text-amber-950 rounded-lg font-medium hover:opacity-90 transition"
           >
             View CV

@@ -27,7 +27,7 @@ const PROJECTS_DATA = [
   },
   {
     id: "sms-analysis-hackathon",
-    title: "SMS Analysis (Hackathon winner!!)",
+    title: "SMS Analysis",
     image: pjt3,
     githubUrl: "https://github.com/Om-mhaismale/Sci-Py-Knights",
     stack: ["Google Colab", "SpaCy", "Python"],
