@@ -20,7 +20,7 @@ export default function About() {
       >
         <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight">
           Hey, I'm{" "}
-          <span className="bg-gradient-to-r from-amber-500 via-pink-700 to-amber-100 text-transparent bg-clip-text block">
+          <span className="bg-gradient-to-r from-amber-500 via-orange-700 to-amber-100 text-transparent bg-clip-text block">
             Om Mhaismale
           </span>
         </h1>
@@ -82,7 +82,7 @@ export default function About() {
         transition={{ duration: 0.8, delay: 0.3 }}
       >
         <div className="relative">
-          <div className="absolute -inset-1 bg-gradient-to-r from-orange-300 via-yellow-100 to-amber-400 rounded-full blur-sm opacity-75 animate-pulse"></div>
+          <div className="absolute -inset-1 bg-gradient-to-r from-amber-500 via-amber-400 to-orange-600 rounded-full blur-sm opacity-75 animate-pulse"></div>
           <img
             src={omImg}
             alt="Om Mhaismale"
