@@ -70,7 +70,7 @@ const Contacts = () => {
   return (
     <motion.section
       id="contact"
-      className="px-4 pt-24 pb-8 scroll-mt-28 text-white min-h-screen flex flex-col items-center justify-center relative overflow-hidden mt-96 z-40"
+      className="px-4 pt-24 pb-8 scroll-mt-6 text-white min-h-screen flex flex-col items-center justify-center relative overflow-hidden mt-96 z-40"
       ref={sectionRef}
       variants={containerVariants}
       initial="hidden"

@@ -6,16 +6,18 @@ import VideoBackground from './components/background'; // Import background dire
 const About = lazy(() => import('./components/about'));
 const Navbar = lazy(() => import('./components/navbar'));
 const Skills = lazy(() => import('./components/skills'));
-const Stats = lazy(() => import('./components/stats')); // Add this line
+// const Stats = lazy(() => import('./components/stats')); // Add this line
 const Projects = lazy(() => import('./components/projects'));
 const Experiences = lazy(() => import('./components/experiences'));
 const Contacts = lazy(() => import('./components/contacts'));
+const LeetCodeStats = lazy(() => import('./components/LeetCodeStats')); // Add this import
 
 // Array of promises for each component import, excluding the background
 const componentPromises = [
   import('./components/navbar'),
   import('./components/about'),
-  import('./components/stats'), // Add this line
+  import('./components/LeetCodeStats'), // Add this line
+  import('./components/stats'),
   import('./components/skills'),
   import('./components/projects'),
   import('./components/experiences'),
@@ -99,7 +101,7 @@ function App() {
         <Suspense fallback={<div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black/70 text-white z-50"><p></p></div>}>
           <Navbar />
           <About />
-          <Stats /> {/* Add this line */}
+          <LeetCodeStats /> {/* Add this line just below About */}
           <Skills />
           <Projects />
           <Experiences />

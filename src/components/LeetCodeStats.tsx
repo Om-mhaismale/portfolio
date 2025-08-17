@@ -90,11 +90,11 @@ const LeetCodeStats = () => {
   const hardPercentage = (stats.hardSolved / hardTotal) * 100;
   
   // Calculate circle segments with gaps
-  const radius = 80;
+  const radius = 90;
   const circumference = 2 * Math.PI * radius;
   
   // Define segments with gaps (leaving space between each segment)
-  const gapSize = 20; // Gap between segments
+  const gapSize = 15; // Gap between segments
   const totalGaps = 3 * gapSize;
   const availableCircumference = circumference - totalGaps;
   
@@ -119,23 +119,28 @@ const LeetCodeStats = () => {
   const hardStartOffset = mediumStartOffset - mediumArcLength - gapSize;
 
   return (
-    <motion.div
-      className="bg-gradient-to-br from-gray-800/40 to-gray-900 rounded-lg p-6 border border-gray-700 max-w-md mx-auto"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-    >
-      <div className="flex items-center gap-3 mb-6">
-        <div className="w-8 h-8 bg-amber-500 rounded flex items-center justify-center">
-          <span className="text-black font-bold text-sm">LC</span>
-        </div>
-        <h3 className="text-lg font-semibold text-white">LeetCode Stats</h3>
-      </div>
-      
-      <div className="flex items-center justify-between">
+    <section className="w-full mt-4 bg-gradient-to-r via-red-950 px-2 sm:px-4">
+      {/* Title as a link */}
+      <a
+        href="https://leetcode.com/user2376Jt/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block w-fit mx-auto mb-2"
+        aria-label="Visit my LeetCode profile"
+      >
+        <h2 className="text-2xl sm:text-3xl font-bold text-white text-center tracking-tight underline decoration-amber-400 underline-offset-4 hover:text-amber-400 transition-colors">
+          My Leets!
+        </h2>
+      </a>
+      <motion.div
+        className="max-w-5xl mx-auto flex flex-col md:flex-row md:items-center md:justify-center gap-8 md:gap-10"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
         {/* Circular Progress */}
-        <div className="relative flex items-center justify-center">
-          <svg className="w-48 h-48 transform -rotate-90" viewBox="0 0 200 200">
+        <div className="relative flex items-center justify-center mb-8 md:mb-0 md:min-w-[220px]">
+          <svg className="w-44 h-44 sm:w-48 sm:h-48 transform -rotate-90" viewBox="0 0 200 200">
             {/* Background segments with light colored highlights */}
             <circle
               cx="100"
@@ -170,9 +175,7 @@ const LeetCodeStats = () => {
               strokeDashoffset={hardStartOffset}
               opacity="0.2"
             />
-            
             {/* Progress segments */}
-            {/* Easy progress - Green/Cyan */}
             <circle
               cx="100"
               cy="100"
@@ -185,8 +188,6 @@ const LeetCodeStats = () => {
               strokeDashoffset={easyStartOffset}
               className="transition-all duration-1000 ease-out"
             />
-            
-            {/* Medium progress - Yellow/Orange */}
             <circle
               cx="100"
               cy="100"
@@ -199,8 +200,6 @@ const LeetCodeStats = () => {
               strokeDashoffset={mediumStartOffset}
               className="transition-all duration-1000 ease-out"
             />
-            
-            {/* Hard progress - Red */}
             <circle
               cx="100"
               cy="100"
@@ -214,7 +213,6 @@ const LeetCodeStats = () => {
               className="transition-all duration-1000 ease-out"
             />
           </svg>
-          
           {/* Center content */}
           <div 
             className="absolute inset-0 flex flex-col items-center justify-center cursor-pointer"
@@ -249,37 +247,27 @@ const LeetCodeStats = () => {
             </div>
           </div>
         </div>
-        
-        {/* Stats sidebar */}
-        <div className="flex flex-col gap-3 ml-6">
-          <div className="bg-gray-700 rounded-lg p-3 min-w-[100px]">
+        {/* Stats cards in a row, responsive */}
+        <div className="flex flex-col xs:flex-row sm:flex-row md:flex-col lg:flex-row gap-3 sm:gap-4 w-full md:w-auto justify-center">
+          <div className="bg-orange-300/5 rounded-lg p-4 flex-1 min-w-[120px] flex flex-col items-center">
             <div className="text-cyan-400 text-sm font-medium">Easy</div>
             <div className="text-white font-bold">{stats.easySolved}/{easyTotal}</div>
           </div>
-          <div className="bg-gray-700 rounded-lg p-3 min-w-[100px]">
+          <div className="bg-orange-300/5 rounded-lg p-4 flex-1 min-w-[120px] flex flex-col items-center">
             <div className="text-yellow-400 text-sm font-medium">Med.</div>
             <div className="text-white font-bold">{stats.mediumSolved}/{mediumTotal}</div>
           </div>
-          <div className="bg-gray-700 rounded-lg p-3 min-w-[100px]">
+          <div className="bg-orange-300/5 rounded-lg p-4 flex-1 min-w-[120px] flex flex-col items-center">
             <div className="text-red-400 text-sm font-medium">Hard</div>
             <div className="text-white font-bold">{stats.hardSolved}/{hardTotal}</div>
           </div>
-          {/* Add Rank card */}
-          <div className="bg-gray-700 rounded-lg p-3 min-w-[100px]">
+          <div className="bg-orange-300/5 rounded-lg p-4 flex-1 min-w-[120px] flex flex-col items-center">
             <div className="text-purple-400 text-sm font-medium">Rank</div>
             <div className="text-white font-bold">#{stats.ranking?.toLocaleString()}</div>
           </div>
         </div>
-      </div>
-      
-      {/* Add rank section at the bottom */}
-      <div className="mt-6 pt-4 border-t border-gray-700">
-        <div className="flex justify-between items-center">
-          <span className="text-gray-400 text-sm">Global Ranking</span>
-          <span className="text-purple-400 font-semibold">#{stats.ranking?.toLocaleString()}</span>
-        </div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </section>
   );
 };
 
