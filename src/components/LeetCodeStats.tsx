@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 
 interface LeetCodeStats {
@@ -11,77 +11,22 @@ interface LeetCodeStats {
 }
 
 const LeetCodeStats = () => {
-  const [stats, setStats] = useState<LeetCodeStats | null>(null);
-  const [loading, setLoading] = useState(true);
+  // Manually add your stats here
+  const stats: LeetCodeStats = {
+    totalSolved: 115,
+    easySolved: 104,
+    mediumSolved: 11,
+    hardSolved: 0,
+    acceptanceRate: 80.47,
+    ranking: 1153714 // Add your actual rank here
+  };
+
   const [showAcceptance, setShowAcceptance] = useState(false);
 
-  useEffect(() => {
-    // Try multiple API endpoints
-    const fetchStats = async () => {
-      const apis = [
-        'https://leetcode-stats-api.herokuapp.com/user2376Jt',
-        'https://alfa-leetcode-api.onrender.com/user2376Jt',
-        // Fallback to static data if APIs fail
-        null
-      ];
-
-      for (const api of apis) {
-        if (!api) {
-          // Fallback static data
-          setStats({
-            totalSolved: 94,
-            easySolved: 84,
-            mediumSolved: 10,
-            hardSolved: 0,
-            acceptanceRate: 79.56,
-            ranking: 245673 // Add your actual rank here
-          });
-          setLoading(false);
-          return;
-        }
-
-        try {
-          const response = await fetch(api);
-          if (response.ok) {
-            const data = await response.json();
-            setStats(data);
-            setLoading(false);
-            return;
-          }
-        } catch (error) {
-          console.error(`API ${api} failed:`, error);
-          continue;
-        }
-      }
-    };
-
-    fetchStats();
-  }, []);
-
-  if (loading) {
-    return (
-      <div className="bg-gray-800 rounded-lg p-6 animate-pulse">
-        <div className="h-4 bg-gray-600 rounded w-1/2 mb-4"></div>
-        <div className="space-y-2">
-          <div className="h-3 bg-gray-600 rounded"></div>
-          <div className="h-3 bg-gray-600 rounded w-5/6"></div>
-        </div>
-      </div>
-    );
-  }
-
-  if (!stats) {
-    return (
-      <div className="bg-gray-800 rounded-lg p-6">
-        <p className="text-gray-400">Unable to load LeetCode stats</p>
-      </div>
-    );
-  }
-
   // Problem totals
-  const easyTotal = 888;
-  const mediumTotal = 1894;
-  const hardTotal = 859;
+  const easyTotal = 896;
+  const mediumTotal = 1914;
+  const hardTotal = 867;
   const totalProblems = easyTotal + mediumTotal + hardTotal;
   
   // Calculate percentages for each difficulty
@@ -243,7 +188,7 @@ const LeetCodeStats = () => {
               )}
             </motion.div>
             <div className="text-gray-500 text-xs mt-2">
-              {showAcceptance ? '137 submission' : '1 Attempting'}
+              {showAcceptance ? '169 submission' : '1 Attempting'}
             </div>
           </div>
         </div>
